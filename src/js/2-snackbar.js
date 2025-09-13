@@ -1,14 +1,17 @@
-import iziToast from "izitoast";
-import "izitoast/dist/css/iziToast.min.css";
+// Імпортуємо iziToast і його стилі
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
+// Отримуємо форму
 const form = document.querySelector(".form");
 
-form.addEventListener("submit", event => {
+form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const delay = Number(form.elements.delay.value);
   const state = form.elements.state.value;
 
+  // Створюємо проміс
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (state === "fulfilled") {
@@ -19,15 +22,16 @@ form.addEventListener("submit", event => {
     }, delay);
   });
 
+  // Обробляємо проміс
   promise
-    .then(delay => {
+    .then((delay) => {
       iziToast.success({
         title: "Success",
         message: `✅ Fulfilled promise in ${delay}ms`,
         position: "topRight",
       });
     })
-    .catch(delay => {
+    .catch((delay) => {
       iziToast.error({
         title: "Error",
         message: `❌ Rejected promise in ${delay}ms`,
