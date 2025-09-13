@@ -1,41 +1,40 @@
-// Імпортуємо iziToast і його стилі
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
 
-// Отримуємо форму
-const form = document.querySelector(".form");
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.querySelector(".form");
+  if (!form) return;
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-  const delay = Number(form.elements.delay.value);
-  const state = form.elements.state.value;
+    const delay = Number(form.elements.delay.value);
+    const state = form.elements.state.value;
 
-  // Створюємо проміс
-  const promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (state === "fulfilled") {
-        resolve(delay);
-      } else {
-        reject(delay);
-      }
-    }, delay);
-  });
-
-  // Обробляємо проміс
-  promise
-    .then((delay) => {
-      iziToast.success({
-        title: "Success",
-        message: `✅ Fulfilled promise in ${delay}ms`,
-        position: "topRight",
-      });
-    })
-    .catch((delay) => {
-      iziToast.error({
-        title: "Error",
-        message: `❌ Rejected promise in ${delay}ms`,
-        position: "topRight",
-      });
+    const promise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (state === "fulfilled") {
+          resolve(delay);
+        } else {
+          reject(delay);
+        }
+      }, delay);
     });
+
+    promise
+      .then((delay) => {
+        iziToast.success({
+          title: "Success",
+          message: `✅ Fulfilled promise in ${delay}ms`,
+          position: "topRight",
+        });
+      })
+      .catch((delay) => {
+        iziToast.error({
+          title: "Error",
+          message: `❌ Rejected promise in ${delay}ms`,
+          position: "topRight",
+        });
+      });
+  });
 });
