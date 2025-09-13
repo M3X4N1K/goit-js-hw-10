@@ -10,7 +10,7 @@
   <body>
     <load
       src="partials/header.html"
-      icon-path="./img/sprite.svg#logo"
+      icon-path="img/sprite.svg#logo"
       highlight-act="active"
     />
 
@@ -21,10 +21,13 @@
         </h1>
         <load src="partials/back-link.html" />
 
-        <!-- Таймер -->
-        <input type="text" id="datetime-picker" />
-        <button type="button" data-start disabled>Start</button>
+        <!-- Контейнер для контролів таймера -->
+        <div class="timer-controls">
+          <input type="text" id="datetime-picker" />
+          <button type="button" data-start disabled>Start</button>
+        </div>
 
+        <!-- Таймер -->
         <div class="timer">
           <div class="field">
             <span class="value" data-days>00</span>

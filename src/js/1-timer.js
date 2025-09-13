@@ -56,6 +56,11 @@ startBtn.addEventListener("click", () => {
       clearInterval(timerId);
       updateTimerUI({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       dateInput.disabled = false;
+      iziToast.success({
+        title: "Completed",
+        message: "Timer finished!",
+        position: "topRight",
+      });
       return;
     }
 
@@ -66,7 +71,7 @@ startBtn.addEventListener("click", () => {
 
 // Оновлення UI
 function updateTimerUI({ days, hours, minutes, seconds }) {
-  daysEl.textContent = days;
+  daysEl.textContent = addLeadingZero(days);
   hoursEl.textContent = addLeadingZero(hours);
   minutesEl.textContent = addLeadingZero(minutes);
   secondsEl.textContent = addLeadingZero(seconds);
