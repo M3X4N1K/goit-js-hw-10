@@ -1,0 +1,2 @@
+import{i as o}from"./vendor-A92OCY9B.js";document.addEventListener("DOMContentLoaded",()=>{const t=document.querySelector(".form");t&&t.addEventListener("submit",i=>{i.preventDefault();const s=Number(t.elements.delay.value),r=t.elements.state.value;new Promise((e,n)=>{setTimeout(()=>{r==="fulfilled"?e(s):n(s)},s)}).then(e=>{o.success({title:"Success",message:`✅ Fulfilled promise in ${e}ms`,position:"topRight"})}).catch(e=>{o.error({title:"Error",message:`❌ Rejected promise in ${e}ms`,position:"topRight"})})})});
+//# sourceMappingURL=2-snackbar-BlymbfAv.js.map
